@@ -13,12 +13,13 @@ public class App {
         public BinaryTree(String v, BinaryTree l, BinaryTree r) {
             value = v;
             left = l;
-            right = l;
+            right = r;
         }
 
         public static BinaryTree fromList(List<String> list) {
+            if(list.isEmpty()) return null;
             int mid = list.size() / 2;
-            return new BinaryTree(list.get(mid), fromList(list.subList(0, mid-1)), fromList(list.subList(mid, list.size()-1)));
+            return new BinaryTree(list.get(mid), fromList(list.subList(0, mid)), fromList(list.subList(mid+1, list.size())));
         }
 
         public List<String> toList() {
